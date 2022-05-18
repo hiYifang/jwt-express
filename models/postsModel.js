@@ -12,12 +12,19 @@ const postsSchema = new mongoose.Schema(
       type: String,
       required: [true, '請填寫貼文內容'],
     },
-    image: String,
+    image: {
+      type: [String],
+    },
     // 設計稿 8.我按讚的貼文
-    likes: {
+    likes: [{
       type: mongoose.Schema.ObjectId,
       ref: "User"
-    },
+    }],
+    // 留言
+    comments:[{
+      type: mongoose.Schema.ObjectId,
+      ref: "Comment"
+    }],
     createdAt: {
       type: Date,
       default: Date.now

@@ -8,14 +8,14 @@ const usersSchema = new mongoose.Schema(
       required: [true, '請填寫暱稱']
     },
     gender: {
+      // (原始) true:male, false:female
+      // (討論) 男性存 0，女性存 1，跨性別存 2
       type: Number,
-      enum: [0, 1, 2], // 0:男性, 1:女性, 2:跨性別
       default: 0,
+      enum: [0, 1, 2]
     },
-    avatar: String,
-    role: {
-      type: Array,
-      enum: ["admin", "user"],
+    avatar: {
+      type: String,
     },
     email: {
       type: String,
