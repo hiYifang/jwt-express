@@ -13,9 +13,9 @@ router.post('/sign_in', UsersControllers.signIn);
 router.post('/updatePassword', isAuth, UsersControllers.updatePassword);
 
 // 取得個人資料
-router.get('/profile/:id', isAuth, UsersControllers.getProfile);
+router.get('/profile', isAuth, UsersControllers.getProfile);
 
 // 更新個人資料
-router.patch('/profile/:id', isAuth, UsersControllers.patchProfile);
+router.patch('/profile', isAuth, UsersControllers.patchProfile);
 
 module.exports = router;

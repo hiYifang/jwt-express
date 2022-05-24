@@ -1,10 +1,7 @@
 const express = require('express');
-const User = require('../models/usersModel');
-
-const appError = require('../service/appError');
-const handleErrorAsync = require('../service/handleErrorAsync');
-
+const { appError, handleErrorAsync } = require('../service/errorHandler');
 const jwt = require('jsonwebtoken');
+const User = require('../models/usersModel');
 
 const isAuth = handleErrorAsync(async (req, res, next) => {
   // 確認 token 是否存在
@@ -32,7 +29,7 @@ const isAuth = handleErrorAsync(async (req, res, next) => {
   })
 
   const currentEditor = await User.findById(decoded.id);
-  req.editor = currentEditor; // 自訂屬性，傳到下一個 middleware
+  req.user = currentEditor; // 自訂屬性，傳到下一個 middleware
   next();
 });
 

@@ -1,5 +1,5 @@
-const appError = require("../service/appError");
-const handleErrorAsync = require("../service/handleErrorAsync");
+const { appError, handleErrorAsync } = require('../service/errorHandler');
+const getHttpResponse = require('../service/successHandler');
 
 const validator = require('validator');
 
@@ -24,44 +24,28 @@ const posts = {
         },
       })
       .sort({ createdAt: sort === 'desc' ? -1 : 1 });
-    res.status(200).json({
-      status: "success",
-      data: posts
-    });
+    res.status(200).json(getHttpResponse(posts));
   }),
   insertPost: handleErrorAsync(async (req, res, next) => {
-    const editorId = req.params.id;
-    const editorExist = await User.findById(editorId);
-    const { editor, body: { content, image } } = req;
-
-    if (!editorExist) {
-      return next(appError(400, "尚未註冊為會員", "_id", next))
-    }
-
-    if (!content)
-    return next(appError(400, "新增失敗，請確認貼文的內容欄位", "content", next));
+    const { user, body: { content, image } } = req;
 
     // 判斷圖片開頭是否為 http
     if (image && image.length > 0) {
       image.forEach(function (item, index, array) {
-        let result = item.split(":");        
+        let result = item.split(":");
         if (!validator.equals(result[0], 'https')) {
-          return next(appError(400, "新增失敗，請確認貼文的圖片網址", "image", next));
+          return next(appError(400, ' 格式錯誤', ' 圖片格式不正確！'));
         }
       });
     }
 
-    // 新增至 model，先固定使用者 ID
-    // const editorId = '627712107054bea4d244740a';
-    const newPost = await Post.create({
-      editor: editor._id,
-      content,
-      image
-    });
-    res.status(200).json({
-      status: "success",
-      data: newPost
-    });
+    if (!content)
+      return next(appError(400, ' 格式錯誤', ' 欄位未填寫正確！'));
+
+    const newPost = await Post.create({ editor: user, content, image });
+
+
+    res.status(201).json(getHttpResponse(newPost));
   })
 }
 

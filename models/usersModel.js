@@ -8,8 +8,7 @@ const usersSchema = new mongoose.Schema(
       required: [true, '請填寫暱稱']
     },
     gender: {
-      // (原始) true:male, false:female
-      // (討論) 男性存 0，女性存 1，跨性別存 2
+      // 男性: 0，女性: 1，跨性別: 2
       type: Number,
       default: 0,
       enum: [0, 1, 2]
@@ -36,15 +35,15 @@ const usersSchema = new mongoose.Schema(
       select: false
     },
     updatedAt: { // 更新時間
-		  type: Date,
-		  default: Date.now,
+      type: Date,
+      default: Date.now,
       // select: false
     },
-		// true: 隱藏資料、false: 顯示在畫面上
+    // true: 隱藏資料、false: 顯示在畫面上
     logicDeleteFlag: {
-	    type: Boolean,
-	    default: false,
-	  },
+      type: Boolean,
+      default: false,
+    },
   },
   {
     versionKey: false

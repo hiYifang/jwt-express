@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/', isAuth, PostsControllers.getPosts);
 
 // 張貼個人動態 - 新增貼文
-router.post('/:id', isAuth, PostsControllers.insertPost);
+router.post('/', isAuth, PostsControllers.insertPost);
 
 module.exports = router;
