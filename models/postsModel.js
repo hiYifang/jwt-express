@@ -25,10 +25,19 @@ const postsSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Comment"
     }],
-    createdAt: {
+    createdAt: { // 建立時間
       type: Date,
       default: Date.now
     },
+    updatedAt: { // 更新時間
+		  type: Date,
+		  default: Date.now,
+    },
+		// true: 隱藏資料、false: 顯示在畫面上
+    logicDeleteFlag: {
+	    type: Boolean,
+	    default: false,
+	  },
   },
   {
     versionKey: false

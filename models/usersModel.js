@@ -30,20 +30,21 @@ const usersSchema = new mongoose.Schema(
       minlength: 8,
       select: false
     },
-    // 設計稿 4.追蹤名單
-    follower: { // 別人 -> 自己
-      type: mongoose.Schema.ObjectId,
-      ref: "User"
-    },
-    following: { // 自己 -> 別人
-      type: mongoose.Schema.ObjectId,
-      ref: "User"
-    },
-    createdAt: {
+    createdAt: { // 建立時間
       type: Date,
       default: Date.now,
       select: false
     },
+    updatedAt: { // 更新時間
+		  type: Date,
+		  default: Date.now,
+      // select: false
+    },
+		// true: 隱藏資料、false: 顯示在畫面上
+    logicDeleteFlag: {
+	    type: Boolean,
+	    default: false,
+	  },
   },
   {
     versionKey: false

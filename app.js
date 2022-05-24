@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const usersRouter = require('./routes/posts');
+const postsRouter = require('./routes/posts');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -31,6 +31,7 @@ app.use(function (req, res, next) {
 const resErrorProd = (err, res) => {
   if (err.isOperational) {
     res.status(err.statusCode).json({
+      status: "false",
       message: err.message
     });
   } else {

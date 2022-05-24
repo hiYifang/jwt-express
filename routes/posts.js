@@ -1,15 +1,12 @@
 const express = require('express');
-const router = express.Router();
 const PostsControllers = require('../controllers/postsControllers');
+const { isAuth } = require('../service/auth');
+const router = express.Router();
 
 // 觀看所有動態
-router.get('/', isAuth, (req, res, next) => {
-  PostsControllers.getPosts(req, res, next);
-});
+router.get('/', isAuth, PostsControllers.getPosts);
 
-// 張貼個人動態
-router.post('/', isAuth, (req, res, next) => {
-  PostsControllers.insertPost(req, res, next);
-});
+// 張貼個人動態 - 新增貼文
+router.post('/:id', isAuth, PostsControllers.insertPost);
 
 module.exports = router;

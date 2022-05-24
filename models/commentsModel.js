@@ -12,10 +12,19 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: [true, '請填寫留言內容'],
     },
-    createdAt: {
+    createdAt: { // 建立時間
       type: Date,
       default: Date.now
     },
+    updatedAt: { // 更新時間
+		  type: Date,
+		  default: Date.now,
+    },
+		// true: 隱藏資料、false: 顯示在畫面上
+    logicDeleteFlag: {
+	    type: Boolean,
+	    default: false,
+	  },
   },
   {
     versionKey: false
