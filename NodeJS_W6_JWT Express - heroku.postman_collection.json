@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "4c559184-e1d4-4e88-ae13-6764a23b1a7c",
+		"name": "NodeJS_W6_JWT Express - heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9583539"
+	},
+	"item": [
+		{
+			"name": "註冊",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nickName\":\"qq12345\",\n    \"email\":\"qq12345@gmail.com\",\n    \"password\":\"qq12341234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/users/sign_up",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_up"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登入",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"qq12345@gmail.com\",\n    \"password\":\"qq12341234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/users/sign_in",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "重設密碼",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGU0ODEzZjhlNDJhYmI0OWQwYzZlYSIsImlhdCI6MTY1MzQ5MTc5OSwiZXhwIjoxNjU0MDk2NTk5fQ.Z0nas_KkxVA2TmcgwRdHzrDARY2_yX2EqJBmj9UrEw0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"1234567abcd\",\n    \"confirmPassword\": \"1234567abcd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/users/updatePassword",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"updatePassword"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人資料",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGU0ODEzZjhlNDJhYmI0OWQwYzZlYSIsImlhdCI6MTY1MzQ5MTc5OSwiZXhwIjoxNjU0MDk2NTk5fQ.Z0nas_KkxVA2TmcgwRdHzrDARY2_yX2EqJBmj9UrEw0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新個人資料",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGU0ODEzZjhlNDJhYmI0OWQwYzZlYSIsImlhdCI6MTY1MzQ5MTc5OSwiZXhwIjoxNjU0MDk2NTk5fQ.Z0nas_KkxVA2TmcgwRdHzrDARY2_yX2EqJBmj9UrEw0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nickName\":\"ABC\",\n    \"gender\": \"1\",\n    \"avatar\": \"https://images.unsplash.com/photo-1652790228045-5f93170628dd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "觀看所有動態",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGU0ODEzZjhlNDJhYmI0OWQwYzZlYSIsImlhdCI6MTY1MzQ5MTc5OSwiZXhwIjoxNjU0MDk2NTk5fQ.Z0nas_KkxVA2TmcgwRdHzrDARY2_yX2EqJBmj9UrEw0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "張貼個人動態",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGU0ODEzZjhlNDJhYmI0OWQwYzZlYSIsImlhdCI6MTY1MzQ5MTc5OSwiZXhwIjoxNjU0MDk2NTk5fQ.Z0nas_KkxVA2TmcgwRdHzrDARY2_yX2EqJBmj9UrEw0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\":\"搶到想要的 NFT 啦\",\n    \"image\":[\"https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fathomless-mesa-87371.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"fathomless-mesa-87371",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
