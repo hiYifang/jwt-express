@@ -19,5 +19,8 @@
     "mongoose": "^6.3.3",
     "morgan": "~1.9.1",
     "validator": "^13.7.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
